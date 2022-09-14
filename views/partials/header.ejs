@@ -1,0 +1,19 @@
+<header>
+    <div class="nav-link">
+        <div class="nav-right">
+            <a href="/">الشكوى</a>
+        </div>
+        <div dir="nav-left">
+            <% if(user){ %>
+                <a href="/logout">تسجيل الخروج</a>
+            <% if(isAdmin){ %>
+                <a>admin</a>
+            <% }%>
+                <a><%= user.name %></a>
+            <% } else{%>
+                
+                <a href="/login">تسجيل الدخول</a>
+                <% } %>
+        </div>
+    </div>
+</header>

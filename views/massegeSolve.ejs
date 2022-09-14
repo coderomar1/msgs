@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="/style.css">
+    <title>حل</title>
+</head>
+<body>
+   <%- include('partials/header') -%>
+    <div class="con">
+        <div class="con-items">
+        <%   %>
+            <form method="post" action="/massegesSolve/<%=msg._id%>?_method=PUT" dir="rtl" readonly>
+                <label for="title">الموضوع :</label><br/>
+                <input class="topinput" id="title" type="text" name="title" value="<%= msg.title %>" readonly/><br>
+                <label for="msg">الشكوى :</label><br/>
+                <textarea  name="maginfo" id="msg"  readonly><%= msg.msg_info %></textarea><br/>
+                <label for="msgrname">اسم المرسل :</label><br/>
+                <input  type="text" name="msgrname" id="msgrname" value="<%= msg.massenger_name%>"  readonly/><br/>
+                <label for="res">الرد :</label><br/>
+                <textarea  name="resAboutMsg" id="res" placeholder="الرد"  ><%=msg.resaboutmsg %></textarea><br/>
+                <label for="state">الحالة :</label><br/>
+                <select  name="state" id="state">
+                    <option><%= msg.msg_state%></option>
+                    <option>تم الحل</option>
+                    <option>في الانتظار </option>
+                </select><br/>
+                <input class="bottominput" type="submit" value="حفظ"/>
+            </form>
+        <%  %>
+        </div>
+    </div>
+    <%- include('partials/footer') -%>
+</body>
+</html>

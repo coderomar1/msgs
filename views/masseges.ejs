@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>الشكاوى</title>
+</head>
+<body>
+   <%- include('partials/header') -%>
+    <div class="con">
+        <div class="con-items">
+            <a class="linkToCreat" href="/createmasseges">انشاء شكوى</a>
+    <% if(user){ %>
+        <% if(isAdmin){ %>
+            <% adms.forEach(m =>{  %>
+                <div class="msgCard" dir="rtl">
+                     <h2>الموضوع : <%= m.title %></h2>
+                     <p>الرسالة : <%= m.msg_info %></p>
+                     <h4>اسم المستخدم : <%= m.massenger_name %></h4>
+                <% if(m.msg_state == 'تم الحل'){ %>
+                     <h3>الحالة : <h3 style="color:green ;"><%= m.msg_state %></h3></h3>
+                     <% } else if(m.msg_state == 'في الانتظار'){%>
+                        <h3>الحالة : <h3 style="color:darkblue ;"><%= m.msg_state %></h3></h3>
+                        <% }%>
+                     <h4>الوقت : <%= m.time %></h4>
+                <a style="color:blue ;" href="/massegeSolve/<%=m._id%>">حل</a>
+                <a  style="color: red;"  href="/deletemsg/<%=m._id%>?_method=DELETE">حذف</a>
+            <% if(m.msg_state == 'تم الحل'){ %>
+                <details>
+                    <summary>عرض الرد</summary>
+                    <p><%=m.resaboutmsg %></p>
+                </details>
+            <% } %>
+                </div>
+            <% }) %>
+        <% } else{ %>
+        <% ms.forEach(m =>{  %>
+            <div class="msgCard" dir="rtl">
+                 <h2>الموضوع : <%= m.title %></h2>
+                 <p>الرسالة : <%= m.msg_info %></p>
+                 <% if(m.msg_state == 'تم الحل'){ %>
+                    <h3>الحالة : <h3 style="color:green ;"><%= m.msg_state %></h3></h3>
+                    <% } else if(m.msg_state == 'في الانتظار'){%>
+                       <h3>الحالة : <h3 style="color:darkblue ;"><%= m.msg_state %></h3></h3>
+                       <% }%>
+                 <h4>الوقت : <%= m.time %></h4>
+                 <% if(m.msg_state == 'تم الحل'){ %>
+                    <details>
+                        <summary>عرض الرد</summary>
+                        <p><%=m.resaboutmsg %></p>
+                    </details>
+                <% } %>
+            </div>
+        <% }) %>
+    <% }} %>
+        </div>
+    </div>
+</body>
+</html>

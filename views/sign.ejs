@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>تسجيل</title>
+</head>
+<body>
+    <%- include('partials/header') -%>
+    <div class="con">
+        <div class="con-items">
+            <% if(massegeSign.length > 0){ %>
+            <span style="color: red;"><%= massegeSign %></span>
+            <% }%>
+            <form method="post" action="/signuser" dir="rtl">
+                <label id="name">اسم المستخدم :</label><br/>
+                <input class="topinput" id="name" type="text" name="name" placeholder="اسم المستخدم" required/><br/>
+                <label id="email">البريد الالكتروني :</label><br/>
+                <input type="email" id="email" name="email" placeholder="البريد الالكتروني" required/><br/>
+                <label id="pass">كلمة المرور :</label><br/>
+                <input type="password" id="pass" name="password" placeholder="كلمة المرور" required/><br/>
+                <input class="bottominput" type="submit" value="تسجيل"/><br/>
+                <a href="/login"> تسجيل الدخول</a>
+        </form>
+        </div>
+    </div>
+</body>
+</html>

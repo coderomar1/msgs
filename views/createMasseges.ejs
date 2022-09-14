@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>انشاء شكوى</title>
+</head>
+<body>
+   <%- include('partials/header') -%>
+    <div class="con">
+        <div class="con-items">
+            <form method="post" action="/createMassege" dir="rtl">
+                <input class="topinput" type="text" name="title" placeholder="الموضوع" /><br>
+                <textarea  name="maginfo" title="الشكوى"></textarea><br/>
+                    <% if(user){ %>
+                <input  type="text" name="msgrname" value="<%= user.name %>" readonly/><br/>
+                <% }%>
+                <input class="bottominput" type="submit" value="حفظ"/>
+        </form>
+        </div>
+    </div>
+</body>
+</html>
